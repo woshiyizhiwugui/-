@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>敬钰娟 - 个人简历</title>
+    <style>
+        :root {
+            --bg-color: #f4f4f4;
+            --card-bg-color: #ffffff;
+            --text-color: #333333;
+            --link-color: #007BFF;
+            --link-hover-color: #0056b3;
+            --divider-color: #e8e8e8;
+            --progress-bg-color: #e9ecef;
+            --progress-bar-color: #007BFF;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        .card {
+            background-color: var(--card-bg-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 50px auto;
+            max-width: 85%;
+            padding: 30px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .avatar {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .avatar:hover {
+            transform: scale(1.1);
+        }
+
+        .name-contact {
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .position {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .contact {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .contact a {
+            color: var(--link-color);
+            text-decoration: none;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .contact a:hover {
+            color: var(--link-hover-color);
+        }
+
+        .intro {
+            font-family: 'Dancing Script', cursive;
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .intro::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: var(--link-color);
+        }
+
+        .section {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background-color: var(--divider-color);
+        }
+
+        .section h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .section h2::before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 10px;
+            color: var(--link-color);
+        }
+
+        .section:nth-child(2) h2::before {
+            content: "\f19d"; /* 教育图标 */
+        }
+
+        .section:nth-child(3) h2::before {
+            content: "\f0b1"; /* 实践图标 */
+        }
+
+        .section:nth-child(4) h2::before {
+            content: "\f0b1"; /* 实习图标 */
+        }
+
+        .section:nth-child(5) h2::before {
+            content: "\f19d"; /* 技能图标 */
+        }
+
+        .section:nth-child(6) h2::before {
+            content: "\f0a3"; /* 证书图标 */
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+        }
+
+        .timeline-item h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .progress-bar {
+            background-color: var(--progress-bg-color);
+            border-radius: 5px;
+            height: 20px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .progress {
+            background-color: var(--progress-bar-color);
+            border-radius: 5px;
+            height: 100%;
+            text-align: left;
+            padding-left: 10px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .radar-chart {
+            width: 100%;
+            height: 230px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .skills-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .progress-container {
+            flex: 1;
+        }
+
+        .radar-container {
+            flex: 1;
+        }
+
+        .footer-contact {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .footer-contact a {
+            color: var(--link-color);
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-contact a:hover {
+            color: var(--link-hover-color);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="card">
+        <div class="header">
+            <img class="avatar" src="my_avatar.jpg" alt="敬钰娟">
+            <div class="name-contact">
+                <div class="name">敬钰娟</div>
+                <div class="position">计算机专业待就业毕业生</div>
+                <div class="contact">
+                    <a href="tel:15310273131"><i class="fa-solid fa-phone"></i> 电话: 15310273131</a>
+                    <a href="mailto:321406513@qq.com"><i class="fa-solid fa-envelope"></i> 邮箱: jingyujuan7@gmail.com</a>
+                    <p><i class="fa-solid fa-location-dot"></i> 地址: 海南省陵水市黎安镇创新教育试验区</p>
+                </div>
+            </div>
+        </div>
+        <div class="intro fade-in">
+            <p>本人责任心强，注重细节，始终追求高效率与高质量。具备良好的沟通能力和团队协作精神，能快速融入新环境。注重细节和效率，能够与不同部门的员工合作紧密，为公司的发展做出积极贡献。</p>
+        </div>
+        <div class="section fade-in">
+            <h2>教育背景</h2>
+            <div class="timeline-item">
+                <h3>海南比勒费尔德应用科学大学 - 计算机科学与技术 - 本科</h3>
+                <p>2024.9 - 2028.9</p>
+                <ul>
+                    <li>主修课程：德语（German Language）,高等数学（Advanced Math）,专业领域课程（Professional Field）,计算机专业英语（Technical English）,跨文化交流课程（Cross - Cultural Communication）,企业与社会责任课程（Entrepreneurship&Social Responsibilities）,中国国情文化课程（Chinese Cultural Studies）,中国近代社会史（China Modern Society）</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section fade-in">
+            <h2>实践经历</h2>
+            <div class="timeline-item">
+                <h3>海南国际教育创新实验区志愿服务 - 志愿者</h3>
+                <p>2024.09</p>
+                <ul>
+                    <li>带领国内以及海外学生积极参与台风天修复校园活动。</li>
+                    <li>志愿服务时长3h。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>全国大学生数字媒体竞赛（AIGC） - 参与学生</h3>
+                <p>2024.10</p>
+                <ul>
+                    <li>带领团队参与制作数字媒体创意视频。</li>
+                    <li>负责运用AI制作创意视频画面并完成剪辑。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>海南国际教育创新实验区 办公室部门（团工委）</h3>
+                <p>2024.10</p>
+                <ul>
+                    <li>进入试验区团工委办公室部门。</li>
+                    <li>参与团工委组织的试验区活动并组织策划大型活动。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>清华大学苏民世书院赴海南研学活动 - 参与学生代表</h3>
+                <p>2024.11</p>
+                <ul>
+                    <li>作为学生代表，围绕自贸港教育发展、国际化办学模式、课程设置等话题。</li>
+                    <li>与清华大学苏世民书院学生展开深入交流。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>海南比勒费尔德应用科学大学&比勒费尔德大学交流活动 - 参与学生代表</h3>
+                <p>2024.11</p>
+                <ul>
+                    <li>作为学生代表参与由来自德国比勒费尔德大学的德国学生进行交流活动。</li>
+                    <li>带领德国学生体验海南“线香”文化并进行翻译任务。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>海南比勒费尔德应用科学大学运动会 - 组织策划人&主持人</h3>
+                <p>2024.11</p>
+                <ul>
+                    <li>进行策划任务并担任运动会主持人。</li>
+                    <li>接待来自德国比勒费尔德大学的师生并带领他们参与活动。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>第三届“海科杯”海南省科学道德和学风建设辩论赛 - 辩论成员</h3>
+                <p>2024.12</p>
+                <ul>
+                    <li>代表学校赴海南海口日报社参加海南省辩论赛省赛。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>全球大学生“unity”3D游戏设计“人类一败涂地”关卡设计大赛 - 获得特等奖</h3>
+                <p>2024.12</p>
+                <ul>
+                    <li>代表学校与同学使用unity参与设计游戏关卡</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>德国HSBI春校访问海南比科大spring school - 颁奖活动主持人&参与成员&接受采访人员</h3>
+                <p>2025.2</p>
+                <ul>
+                    <li>主持活动的开展，作为学生代表进行活动感想总结。</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3>博鳌亚洲论坛海南自贸港建设成果展暨儋州城市展志愿服务活动 - 志愿成员</h3>
+                <p>2025.3</p>
+                <ul>
+                    <li>进行为期11天的志愿服务，服务来自世界各地的博鳌论坛人员</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section fade-in">
+            <h2>实习经历</h2>
+            <div class="timeline-item">
+                <h3>宜宾辰海数智城市运营有限公司 - 运营部新媒体运营</h3>
+                <p>2025.1.4 - 2025.2.4</p>
+                <ul>
+                    <li>在运营部负责新媒体运营相关工作。</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section fade-in">
+            <h2>专业技能</h2>
+            <div class="skills-container">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 70%;">交流沟通能力 - 70%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%;">演讲能力 - 80%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%;">Office办公软件使用 - 85%</div>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%;">文字与写作能力 - 75%</div>
+                    </div>
+                </div>
+                <div class="radar-container">
+                    <canvas class="radar-chart" id="radarChart"></canvas>
+                </div>
+            </div>
+            <script>
+                const ctx = document.getElementById('radarChart').getContext('2d');
+                const myRadarChart = new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['交流沟通', '演讲', 'Office办公', '文字写作'],
+                        datasets: [{
+                            label: '技能水平',
+                            data: [70, 80, 85, 75],
+                            backgroundColor: 'rgba(0, 123, 255, 0.2)',
+                            borderColor: 'rgba(0, 123, 255, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            r: {
+                                min: 0,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            </script>
+        </div>
+        <div class="section fade-in">
+            <h2>专业证书</h2>
+            <p>大学英语四级(CET - 4)，普通话标准流利，良好的听说读写能力。</p>
+        </div>
+        <div class="footer-contact">
+            <a href="tel:15310273131"><i class="fa-solid fa-phone"></i></a>
+            <a href="mailto:321406513@qq.com"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+    </div>
+</body>
+
+</html>    
